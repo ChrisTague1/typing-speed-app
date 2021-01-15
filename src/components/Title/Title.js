@@ -3,12 +3,12 @@ import './Title.css';
 
 const Title = () => {
     return (
-        <div>
+        <div className='Title'>
             <h2 className='headline'>
                 Title
             </h2>
             <button>
-                Start
+                Start Test
             </button>
             <button>
                 Reset

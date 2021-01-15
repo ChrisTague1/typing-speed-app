@@ -1,5 +1,26 @@
+.Title {
+  background-color: gray;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
 
 .headline {
-    color: red;
+    color: whitesmoke;
     
+}
+
+.Title button {
+  background-color: blue;
+  color: white;
+  font: inherit;
+  border: 1px solid lightblue;
+  padding: 8px;
+  cursor: pointer;
+  width: 200px;
+}
+
+.Title button:hover {
+  background-color: lightblue;
+  color: black;
 }
