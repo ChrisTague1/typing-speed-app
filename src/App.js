@@ -14,15 +14,36 @@ class App extends Component {
     currentWord: '',
     nextWord: '',
     totalWords: 0,
-    timeLeft: 60
+    timeLeft: 60,
+    wordColorGreen: true,
+
   }
-    
+
+  onInputChange = (event) => {
+    this.setState({input: event.target.value});
+    checkWordProgress();
+  }
+
+  checkWordProgress = () => {
+    if (this.state.currentWord.startsWith(this.state.input)) {
+      this.setState({wordColorGreen: true});
+      checkWordFinished();
+    } else this.setState({wordColorGreen: false})
+  }
+
+  checkWordFinished = () => {
+    if (this.state.currentWord === this.state.input) {
+      this.state.totalWords++;
+      
+    }
+  }
+
   render() {
     return (
        <div className='App'>
         <Title />
         <Words />
-        <Input />
+        <Input onInputChange={this.onInputChange} wordColorGreen={this.wordColorGreen}/>
         <TimeRemaining />
         <LiveWPM />
       </div>
