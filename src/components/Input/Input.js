@@ -5,7 +5,8 @@ const input = (props) => {
     return (
         <div>
             <input 
-                className={props.inputWordStyle} 
+                className={props.inputWordStyle}
+                id='inputBox' 
                 type='text' 
                 placeholder="Enter Current Word" 
                 onChange={props.onInputChange} 

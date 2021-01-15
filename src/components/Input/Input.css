@@ -5,3 +5,14 @@
 .isRed[type=text] {
     color: red;
 }
+
+.isBlack[type=text] {
+    color: black;
+}
+
+#inputBox {
+    width: 10em;
+    font-size: 2em;
+    border-radius: 1em;
+    text-align: center;
+}

@@ -1,0 +1,24 @@
+.container {
+  /* border: solid red; */
+  display: inline-grid;
+  width: 15rem;
+  grid-template-rows: repeat(2, 50%);
+  gap: 0.5rem;
+  justify-items: center;
+  padding: 0.75rem;
+}
+
+.box {
+  border-radius: 10rem;
+  border: solid #AF1B3F;
+}
+
+.currentWord {
+  font-size: 1.75em;
+  width: 75%;
+}
+
+.nextWord {
+  font-size: 0.9em;
+  width: 40%;
+}

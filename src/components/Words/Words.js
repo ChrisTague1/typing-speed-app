@@ -3,12 +3,12 @@ import './Words.css';
 
 const words = (props) => {
     return (
-        <div>
-            <div>
-                {props.currentWord}
-            </div>
-            <div>
+        <div className='container'>
+            <div className='box nextWord'>
                 {props.nextWord}
+            </div>
+            <div className='box currentWord'>
+                {props.currentWord}
             </div>
         </div>
     );
