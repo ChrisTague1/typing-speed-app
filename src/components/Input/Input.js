@@ -4,7 +4,7 @@ import styles from './Input.css';
 const input = () => {
     return (
         <div>
-            <input type='text' value="Enter your words" />
+            <input type='text' />
         </div>
     );
 }
