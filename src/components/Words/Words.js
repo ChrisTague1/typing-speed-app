@@ -1,15 +1,14 @@
 import React from 'react';
-import styles from './Words.css';
-
-const { border } = styles;
+import './Words.css';
+import wordList from './words.txt';
 
 const words = () => {
     return (
         <div>
-            <div className={border}>
+            <div>
                 Current word
             </div>
-            <div className={border}>
+            <div>
                 Next word
             </div>
         </div>

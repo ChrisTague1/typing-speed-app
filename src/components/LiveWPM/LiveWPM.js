@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './LiveWPM.css';
+import './LiveWPM.css';
 
 const livewpm = () => {
     return (

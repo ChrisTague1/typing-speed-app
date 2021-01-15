@@ -1,10 +1,10 @@
 import React from 'react';
-import styles from './Title.css';
+import './Title.css';
 
 const Title = () => {
     return (
         <div>
-            <h2 className={styles.headline}>
+            <h2 className='headline'>
                 Title
             </h2>
             <button>
