@@ -1,6 +1,5 @@
 import React from 'react';
 import './Words.css';
-import wordList from './words.txt';
 
 const words = () => {
     return (
