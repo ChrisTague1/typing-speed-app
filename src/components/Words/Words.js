@@ -1,14 +1,14 @@
 import React from 'react';
 import './Words.css';
 
-const words = () => {
+const words = (props) => {
     return (
         <div>
             <div>
-                Current word
+                {props.currentWord}
             </div>
             <div>
-                Next word
+                {props.nextWord}
             </div>
         </div>
     );

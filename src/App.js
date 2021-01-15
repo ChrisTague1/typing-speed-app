@@ -1,23 +1,33 @@
 import React, { Component } from 'react';
 import Title from './components/Title/Title';
 import Words from './components/Words/Words';
+import allWords from './components/Words/allWords';
 import Input from './components/Input/Input';
 import TimeRemaining from './components/TimeLeft/TimeLeft';
 import LiveWPM from './components/LiveWPM/LiveWPM';
-import OverlayTimer from './components/OverlayTimer/OverlayTimer';
+// import OverlayTimer from './components/OverlayTimer/OverlayTimer';
 import './App.css';
 
 class App extends Component {
-  state = {
-    gameRunning: false,
-    input: '',
-    currentWord: 'hello',
-    nextWord: '',
-    totalWords: 0,
-    timeLeft: 60,
-    inputWordStyle: 'isRed',
+  constructor(props) {
+    super(props)
+    const index1 = Math.floor(Math.random() * allWords.length);
+    const tmpWord = allWords[index1];
+    allWords.splice(index1, 1);
+    const index2 = Math.floor(Math.random() * allWords.length);
 
+
+    this.state = {
+      gameRunning: false,
+      input: '',
+      currentWord: tmpWord,
+      nextWord: allWords[index2],
+      totalWords: 0,
+      timeLeft: 60,
+      inputWordStyle: 'isRed',
+    }
   }
+
 
   onInputChange = (event) => {
     this.setState({input: event.target.value});
@@ -33,11 +43,15 @@ class App extends Component {
 
   checkWordFinished = (word) => {
     if (this.state.currentWord === word) {
+      const index = Math.floor(Math.random() * allWords.length);
       this.setState((prevState, props) => {
         return {
         input: "",
-        totalWords: ++prevState.totalWords
+        totalWords: ++prevState.totalWords,
+        currentWord: prevState.nextWord,
+        nextWord: allWords[index]
       }})
+      allWords.splice(index, 1);
     }
   }
 
@@ -46,7 +60,7 @@ class App extends Component {
        <div className='App'>
         {/* <OverlayTimer /> */}
         <Title />
-        <Words />
+        <Words currentWord={this.state.currentWord} nextWord={this.state.nextWord} />
         <Input 
           onInputChange={this.onInputChange} 
           inputWordStyle={this.state.inputWordStyle} 
