@@ -1,10 +1,15 @@
 import React from 'react';
 import './Input.css';
 
-const input = ({ onInputChange }) => {
+const input = ({ onInputChange, inputWordStyle }) => {
     return (
         <div>
-            <input type='text' />
+            <input 
+                className={inputWordStyle} 
+                type='text' 
+                placeholder="Enter Current Word" 
+                onChange={onInputChange}  
+            />
         </div>
     );
 }

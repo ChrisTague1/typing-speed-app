@@ -1000,3 +1000,5 @@ const allWords = [
   "your",
   "yourself"
 ];
+
+export default allWords;

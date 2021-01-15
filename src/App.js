@@ -11,31 +11,36 @@ class App extends Component {
   state = {
     gameRunning: false,
     input: '',
-    currentWord: '',
+    currentWord: 'hello',
     nextWord: '',
     totalWords: 0,
     timeLeft: 60,
-    wordColorGreen: true,
+    inputWordStyle: 'isRed',
 
   }
 
   onInputChange = (event) => {
     this.setState({input: event.target.value});
-    checkWordProgress();
+    this.checkWordProgress(event.target.value);
+    console.log("onInputChange", event.target.value)
   }
 
-  checkWordProgress = () => {
-    if (this.state.currentWord.startsWith(this.state.input)) {
-      this.setState({wordColorGreen: true});
-      checkWordFinished();
-    } else this.setState({wordColorGreen: false})
+  checkWordProgress = (word) => {
+    if (this.state.currentWord.startsWith(word)) {
+      this.setState({inputWordStyle: 'isGreen'});
+      this.checkWordFinished(word);
+    } else this.setState({inputWordStyle: 'isRed'})
   }
 
-  checkWordFinished = () => {
-    if (this.state.currentWord === this.state.input) {
-      this.state.totalWords++;
-      
+  checkWordFinished = (word) => {
+    if (this.state.currentWord === word) {
+      this.setState((prevState, props) => {
+        return {
+        input: "",
+        totalWords: prevState.totalWords++
+      }})
     }
+    console.log(this.state.totalWords)
   }
 
   render() {
@@ -43,7 +48,14 @@ class App extends Component {
        <div className='App'>
         <Title />
         <Words />
-        <Input onInputChange={this.onInputChange} wordColorGreen={this.wordColorGreen}/>
+        <Input 
+          onInputChange={this.onInputChange} 
+          inputWordStyle={this.state.inputWordStyle} 
+          text={this.state.input} 
+        />
+        <h1>
+          {this.state.input}
+        </h1>
         <TimeRemaining />
         <LiveWPM />
       </div>
