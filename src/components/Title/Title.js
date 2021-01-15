@@ -1,18 +1,14 @@
 import React from 'react';
 import './Title.css';
 
-const Title = () => {
+const Title = (props) => {
     return (
         <div className='Title'>
             <h2 className='headline'>
-                Title
+                Typing Speed Test
             </h2>
-            <button>
-                Start Test
-            </button>
-            <button>
-                Reset
-            </button>
+            <button onClick={props.startTest}>Start Test</button>
+            <button onClick={props.resetTest}>Reset</button>
         </div>
     );
 }
