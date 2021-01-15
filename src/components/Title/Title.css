@@ -1,26 +1,33 @@
 .Title {
-  background-color: gray;
+  background-color:  #473144;
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: auto;
 }
 
 .headline {
-    color: whitesmoke;
-    
+    color: #ccb69b;
+    font: 1.8em sans-serif;
+    font-style: oblique;
+    text-transform: uppercase;
+    letter-spacing: 0.5em;
+    top: 15%;
 }
 
 .Title button {
-  background-color: blue;
+  background-color: #af1b3f;
   color: white;
   font: inherit;
-  border: 1px solid lightblue;
+  border: 1px solid #df9b6d;
   padding: 8px;
   cursor: pointer;
-  width: 200px;
+  width: 10%;
+  margin: 0px 100px 20px;
+  border-radius: 15px;
 }
 
 .Title button:hover {
-  background-color: lightblue;
+  background-color: #df9b6d;
   color: black;
 }
