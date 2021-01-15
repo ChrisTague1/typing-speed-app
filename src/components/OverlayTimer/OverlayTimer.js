@@ -3,7 +3,7 @@ import './OverlayTimer.css';
 
 const overlayTimer = (props) => {
   let classes = ["overlay-timer"];
-  if (!props.active) classes.push("hidden");
+  // if (!props.active) classes.push("hidden");
 
   return (
     <div className={classes.join(' ')}>

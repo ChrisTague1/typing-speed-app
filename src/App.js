@@ -1,10 +1,10 @@
-
 import React, { Component } from 'react';
 import Title from './components/Title/Title';
 import Words from './components/Words/Words';
 import Input from './components/Input/Input';
 import TimeRemaining from './components/TimeLeft/TimeLeft';
 import LiveWPM from './components/LiveWPM/LiveWPM';
+import OverlayTimer from './components/OverlayTimer/OverlayTimer';
 import './App.css';
 
 class App extends Component {
@@ -22,7 +22,6 @@ class App extends Component {
   onInputChange = (event) => {
     this.setState({input: event.target.value});
     this.checkWordProgress(event.target.value);
-    console.log("onInputChange", event.target.value)
   }
 
   checkWordProgress = (word) => {
@@ -37,15 +36,15 @@ class App extends Component {
       this.setState((prevState, props) => {
         return {
         input: "",
-        totalWords: prevState.totalWords++
+        totalWords: ++prevState.totalWords
       }})
     }
-    console.log(this.state.totalWords)
   }
 
   render() {
     return (
        <div className='App'>
+        {/* <OverlayTimer /> */}
         <Title />
         <Words />
         <Input 
@@ -53,9 +52,6 @@ class App extends Component {
           inputWordStyle={this.state.inputWordStyle} 
           text={this.state.input} 
         />
-        <h1>
-          {this.state.input}
-        </h1>
         <TimeRemaining />
         <LiveWPM />
       </div>
