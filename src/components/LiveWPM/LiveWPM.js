@@ -1,11 +1,11 @@
 import React from 'react';
 import './LiveWPM.css';
 
-const livewpm = () => {
+const livewpm = (props) => {
     return (
         <div>
             <p>
-                60 WPM
+                {}
             </p>
         </div>
     );
