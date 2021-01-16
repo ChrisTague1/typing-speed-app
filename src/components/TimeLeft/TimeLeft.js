@@ -3,11 +3,7 @@ import './TimeLeft.css';
 
 const timeleft = () => {
     return (
-        <div>
-            <p>
-                1.00 seconds
-            </p>
-        </div>
+        <h2>{props.time} seconds</h2>
     );
 }
 

@@ -11,3 +11,8 @@
 .hidden {
   visibility: hidden;
 }
+
+.countdown {
+  padding-top: 220px;
+  font-size: 4em;
+}
