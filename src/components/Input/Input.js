@@ -11,6 +11,7 @@ const input = (props) => {
                 placeholder="Enter Current Word" 
                 onChange={props.onInputChange} 
                 value={props.text}
+                disabled={props.disabled}
             />
         </div>
     );
