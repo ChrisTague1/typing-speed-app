@@ -2,7 +2,7 @@ import fullWordList from './components/Words/allWords';
 
 const constants = {
   wordList: [...fullWordList],
-  gameTime: 60,
+  gameTime: 30,
   avgWordLength: 5
 };
 

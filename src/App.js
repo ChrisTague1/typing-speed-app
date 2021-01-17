@@ -24,11 +24,18 @@ class App extends Component {
       countdown: 3,
       overlayActive: false,
       correctKeystrokes: 0,
-      inputDisabled: true
+      inputDisabled: true,
+      currentIndex: 1
     }
   }
 
-  getIndex = () => Math.floor(Math.random() * constants.wordList.length);
+
+  shuffleArray = (array) => {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]]
+    }
+  }
 
   onInputChange = (event) => {
       this.setState({input: event.target.value});
@@ -36,42 +43,38 @@ class App extends Component {
   }
 
   checkWordProgress = (word) => {
-    if (this.state.currentWord.concat(" ").startsWith(word)) {
+    if (this.state.currentWord.startsWith(word)) {
       this.setState({inputWordStyle: 'isGreen'});
       this.checkWordFinished(word);
     } else this.setState({inputWordStyle: 'isRed'})
   }
 
   checkWordFinished = (word) => {
-    if (this.state.currentWord.concat(" ") === word) {
-      const index = this.getIndex();
+    if (this.state.currentWord === word) {
       this.setState((prevState, props) => {
         return {
           input: "",
+          currentIndex: ++prevState.currentIndex,
           totalWords: ++prevState.totalWords,
-          correctKeystrokes: prevState.correctKeystrokes + prevState.currentWord.length,
-          currentWord: prevState.nextWord,
-          nextWord: constants.wordList[index],
+          correctKeystrokes: prevState.correctKeystrokes + prevState.currentWord.length - 1,
+          currentWord: constants.wordList[this.state.currentIndex].concat(" "),
+          nextWord: constants.wordList[this.state.currentIndex + 1],
           inputWordStyle: 'isBlack'
         };
       });
-      constants.wordList.splice(index, 1);
     }
   }
 
   startTest = () => {
-    if (!this.state.testGoing) {
-      const index1 = this.getIndex();
-      const tmp_word = constants.wordList[index1];
-      constants.wordList.splice(index1, 1);
-      const index2 = this.getIndex();
+    if (!this.state.testGoing && this.state.time === constants.gameTime) {
+      this.shuffleArray(constants.wordList);
       this.setState({
-        currentWord: tmp_word,
-        nextWord: constants.wordList[index2]
+        currentWord: constants.wordList[0].concat(" "),
+        nextWord: constants.wordList[1]
       });
-      constants.wordList.splice(index2, 1);
       this.startTimer();
     }
+    console.timeEnd("startTest");
   }
 
   resetTest = () => {
@@ -79,9 +82,11 @@ class App extends Component {
       currentWord: 'Current',
       nextWord: 'Next',
       correctKeystrokes: 0,
-      totalWords: 0
+      totalWords: 0,
+      input: "",
+      time: constants.gameTime
     })
-    if (this.state.gameRunning) this.stopTimer();
+    this.stopTimer();
   }
 
   startTimer = () => {
@@ -111,7 +116,7 @@ class App extends Component {
 
       setTimeout(() => {
         console.log("DONE WITH TEST");
-      }, constants.gameTime * 1000);
+      }, (constants.gameTime + 3) * 1000);
     }
   }
 
@@ -121,9 +126,13 @@ class App extends Component {
       inputDisabled: true
     });
     clearInterval(this.timer);
+    this.setState({
+      input: ""
+    })
   }
 
   stopCountdown = () => {
+    clearInterval(this.countdownTimer);
     this.setState({
       overlayActive: false,
       countdown: 3
