@@ -17,7 +17,6 @@ class App extends Component {
       input: '',
       currentWord: 'Current',
       nextWord: 'Next',
-      totalWords: 0,
       inputWordStyle: 'isBlack',
       time: constants.gameTime,
       testGoing: false,
@@ -55,7 +54,6 @@ class App extends Component {
         return {
           input: "",
           currentIndex: ++prevState.currentIndex,
-          totalWords: ++prevState.totalWords,
           correctKeystrokes: prevState.correctKeystrokes + prevState.currentWord.length - 1,
           currentWord: constants.wordList[this.state.currentIndex].concat(" "),
           nextWord: constants.wordList[this.state.currentIndex + 1],
@@ -74,7 +72,6 @@ class App extends Component {
       });
       this.startTimer();
     }
-    console.timeEnd("startTest");
   }
 
   resetTest = () => {
@@ -82,7 +79,7 @@ class App extends Component {
       currentWord: 'Current',
       nextWord: 'Next',
       correctKeystrokes: 0,
-      totalWords: 0,
+      currentIndex: 1,
       input: "",
       time: constants.gameTime
     })
@@ -121,14 +118,12 @@ class App extends Component {
   }
 
   stopTimer = () => {
-    this.setState({
-      testGoing: false,
-      inputDisabled: true
-    });
     clearInterval(this.timer);
     this.setState({
+      testGoing: false,
+      inputDisabled: true,
       input: ""
-    })
+    });
   }
 
   stopCountdown = () => {
