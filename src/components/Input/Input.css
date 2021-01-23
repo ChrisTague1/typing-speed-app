@@ -14,5 +14,9 @@
     width: 50%;
     font-size: 2em;
     border-radius: 1em;
-    text-align: center;
+    text-align: left;
+}
+
+#inputBox[type=text] {
+    padding-left: 0.5em;
 }

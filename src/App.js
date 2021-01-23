@@ -8,6 +8,7 @@ import OverlayTimer from './components/OverlayTimer/OverlayTimer';
 import constants from './constants';
 import './App.css';
 
+const preGame = ["Enter the words that come up in this box"];
 
 class App extends Component {
   constructor(props) {
@@ -23,7 +24,7 @@ class App extends Component {
       correctKeystrokes: 0,
       inputDisabled: true,
       currentIndex: 1,
-      allWords: this.shuffleArray(constants.wordList)
+      allWords: preGame
     }
   }
 
@@ -56,7 +57,7 @@ class App extends Component {
         return {
           input: "",
           currentIndex: ++prevState.currentIndex,
-          correctKeystrokes: prevState.correctKeystrokes + prevState.currentWord.length - 1,
+          correctKeystrokes: prevState.correctKeystrokes + prevState.allWords[0].length - 1,
           inputWordStyle: 'isBlack',
           allWords: tempArray
         };
@@ -68,8 +69,7 @@ class App extends Component {
     if (!this.state.testGoing && this.state.time === constants.gameTime) {
       this.shuffleArray(constants.wordList);
       this.setState({
-        currentWord: constants.wordList[0].concat(" "),
-        nextWord: constants.wordList[1]
+        allWords: this.shuffleArray(constants.wordList)
       });
       this.startTimer();
     }
@@ -77,12 +77,12 @@ class App extends Component {
 
   resetTest = () => {
     this.setState({
-      currentWord: 'Current',
-      nextWord: 'Next',
       correctKeystrokes: 0,
       currentIndex: 1,
       input: "",
-      time: constants.gameTime
+      time: constants.gameTime,
+      allWords: preGame,
+      inputWordStyle: 'isBlack',
     })
     this.stopTimer();
   }
