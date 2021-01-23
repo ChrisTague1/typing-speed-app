@@ -15,8 +15,6 @@ class App extends Component {
     this.state = {
       gameRunning: false,
       input: '',
-      currentWord: 'Current',
-      nextWord: 'Next',
       inputWordStyle: 'isBlack',
       time: constants.gameTime,
       testGoing: false,
@@ -24,7 +22,8 @@ class App extends Component {
       overlayActive: false,
       correctKeystrokes: 0,
       inputDisabled: true,
-      currentIndex: 1
+      currentIndex: 1,
+      allWords: this.shuffleArray(constants.wordList)
     }
   }
 
@@ -34,6 +33,7 @@ class App extends Component {
       const j = Math.floor(Math.random() * (i + 1));
       [array[i], array[j]] = [array[j], array[i]]
     }
+    return array;
   }
 
   onInputChange = (event) => {
@@ -42,22 +42,23 @@ class App extends Component {
   }
 
   checkWordProgress = (word) => {
-    if (this.state.currentWord.startsWith(word)) {
+    if (this.state.allWords[0].concat(" ").startsWith(word)) {
       this.setState({inputWordStyle: 'isGreen'});
       this.checkWordFinished(word);
     } else this.setState({inputWordStyle: 'isRed'})
   }
 
   checkWordFinished = (word) => {
-    if (this.state.currentWord === word) {
+    if (this.state.allWords[0].concat(" ") === word) {
+      const tempArray = [...this.state.allWords];
+      tempArray.splice(0, 1);
       this.setState((prevState, props) => {
         return {
           input: "",
           currentIndex: ++prevState.currentIndex,
           correctKeystrokes: prevState.correctKeystrokes + prevState.currentWord.length - 1,
-          currentWord: constants.wordList[this.state.currentIndex].concat(" "),
-          nextWord: constants.wordList[this.state.currentIndex + 1],
-          inputWordStyle: 'isBlack'
+          inputWordStyle: 'isBlack',
+          allWords: tempArray
         };
       });
     }
@@ -140,7 +141,7 @@ class App extends Component {
        <div className='App'>
         <OverlayTimer time={this.state.countdown} active={this.state.overlayActive} />
         <Title startTest={this.startTest} resetTest={this.resetTest}/>
-        <Words currentWord={this.state.currentWord} nextWord={this.state.nextWord} />
+        <Words words={this.state.allWords} />
         <Input 
           onInputChange={this.onInputChange} 
           inputWordStyle={this.state.inputWordStyle} 
