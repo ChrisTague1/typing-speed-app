@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/typing-speed-app/static/css/main.884612e5.chunk.css",
+    "main.js": "/typing-speed-app/static/js/main.69918c57.chunk.js",
+    "main.js.map": "/typing-speed-app/static/js/main.69918c57.chunk.js.map",
+    "runtime-main.js": "/typing-speed-app/static/js/runtime-main.02476be2.js",
+    "runtime-main.js.map": "/typing-speed-app/static/js/runtime-main.02476be2.js.map",
+    "static/js/2.eef4b246.chunk.js": "/typing-speed-app/static/js/2.eef4b246.chunk.js",
+    "static/js/2.eef4b246.chunk.js.map": "/typing-speed-app/static/js/2.eef4b246.chunk.js.map",
+    "static/js/3.e7f5187a.chunk.js": "/typing-speed-app/static/js/3.e7f5187a.chunk.js",
+    "static/js/3.e7f5187a.chunk.js.map": "/typing-speed-app/static/js/3.e7f5187a.chunk.js.map",
+    "index.html": "/typing-speed-app/index.html",
+    "static/css/main.884612e5.chunk.css.map": "/typing-speed-app/static/css/main.884612e5.chunk.css.map",
+    "static/js/2.eef4b246.chunk.js.LICENSE.txt": "/typing-speed-app/static/js/2.eef4b246.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.02476be2.js",
+    "static/js/2.eef4b246.chunk.js",
+    "static/css/main.884612e5.chunk.css",
+    "static/js/main.69918c57.chunk.js"
+  ]
+}
